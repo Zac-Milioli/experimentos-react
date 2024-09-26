@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>React App</title>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { hidden: false }
+            }
+            
+            changeHidden = () => {
+                let hid = !this.state.hidden;
+                this.setState({ hidden: hid });
+            }
+
+            render() {
+                return (
+                    <div>
+                        <h1>Esconde texto</h1>
+                        <button type="button" onClick={ this.changeHidden }>{(this.state.hidden ? "exibir": "esconder")}</button>
+                        <p hidden={(this.state.hidden ? "hidden": "")}>Texinho que fica invisível uuuuuuuu</p>    
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>React App</title>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+        body {
+            background-color: #ffc170;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #root {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        class Car extends React.Component {
+            constructor(){
+                super();
+                this.state = { color: "sem cor" }
+            }
+            
+            render() {
+                return <h2>{this.props.type} {this.props.color}</h2>;
+            }
+        }
+        // ReactDOM.render(<Car type="hb20" />, document.getElementById('root'));
+
+        class Garage extends Car {
+            render() {
+                return (
+                    <div>
+                        <h1>Na quebrada descolaram</h1>
+                        <Car type="- chevrolet" color="verde" />    
+                        <Car type="- hb20" color="branco" />    
+                        <Car type="- smart" color="azul" />    
+                        <Car type="- onix" color="preto" />    
+                        <Car type="- peugeot" color="ciano" />    
+                        <Car type="- uno mille" color="todo quebrado e coberto de fezes de pássaro" />    
+                    </div>
+                )
+            }
+        }
+        
+        ReactDOM.render(<Garage />, document.getElementById('root'));
+
+
+        // function CarFunction(){
+        //         return <h2>Hi, I am a Car function!</h2>;
+        // }
+        // ReactDOM.render(<CarFunction />, document.getElementById('root'));
+    </script>
+
+</body>
+</html>
