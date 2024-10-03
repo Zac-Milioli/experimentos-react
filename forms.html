@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        class MyForm extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { 
+                    username : "",
+                    userage: ""
+                }
+            }
+
+            changeHandler = (event) => {
+                let nam = event.target.name
+                let val = event.target.value
+                this.setState({[nam]: val})
+            }
+
+            submitHandler = (event) => {
+                event.preventDefault();
+                alert(`Dados: ${this.state.username} ${this.state.userage}`)
+            }
+            
+            render() {
+                let header = '';
+                if (this.state.username) {
+                    header = <h1>Dados: {this.state.username} {this.state.userage}</h1>
+                } else {
+                    header = '';
+                }
+
+                return(
+                    <form onSubmit={this.submitHandler}>
+                        <h1>{ header }</h1>
+                        <p>Insira seu nome</p>
+                        <input 
+                            type='text'
+                            name='username'
+                            onChange={this.changeHandler}
+                        />
+                        <p>Insira sua idade</p>
+                        <input 
+                            type='text'
+                            name='userage'
+                            onChange={this.changeHandler}
+                        />
+                        <br />
+                        <br />
+                        <input 
+                            type='submit'
+                        />
+                    </form>
+                )
+            }
+        }
+
+        ReactDOM.render(<MyForm />, document.getElementById('root'));
+    </script>
+</body>
+</html>
